@@ -42,6 +42,13 @@ public class Main {
                 printAllNotes();
                 break;
             }
+            case 2: {
+                printSpecificNote();
+            }
+            case 3: {
+                // удалить заметку
+                removeNote();
+            }
             case 4: {
                 // добавить заметку
                 addNote();
@@ -73,5 +80,36 @@ public class Main {
         for (Note note : notes) {
             System.out.println(index + " " + note.text.substring(0, 16) + "...");
         }
+    }
+
+    public static void removeNote() {
+        System.out.println("Введите номер заметки:");
+
+        if (scanner.hasNextInt()) {
+            int number = scanner.nextInt();
+            scanner.nextLine();
+
+            if (number >= 0 && number < notes.size()) {
+                notes.remove(number);
+            } else {
+                System.out.println("Нет заметки с номером " + number + "!");
+            }
+        }
+    }
+
+    public static void printSpecificNote() {
+        System.out.println("Введите номер заметки:");
+
+        if (scanner.hasNextInt()) {
+            int number = scanner.nextInt();
+            scanner.nextLine();
+
+            if (number >= 0 && number < notes.size()) {
+                System.out.println(notes.get(number).text);
+            } else {
+                System.out.println("Нет заметки с номером " + number + "!");
+            }
+        }
+
     }
 }
